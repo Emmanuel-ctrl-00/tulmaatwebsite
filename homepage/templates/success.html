@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful</title>
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --deep-plum: #4a2c40;
+            --soft-white: #fcfcfc;
+            --text-dark: #2d2d2d;
+            --light-gray: #f4f4f4;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f7f6;
+        }
+        .success-card {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .icon {
+            color: #2ecc71;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+        .home-btn {
+            background-color: var(--deep-plum);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .home-btn:hover {
+            background-color: var(--primary-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <div class="icon">✓</div>
+        <h1>Booking Confirmed!</h1>
+        <p>Your details have been successfully submitted and saved.</p>
+        
+        <button class="home-btn" onclick="goToHomepage()">Go Back to Homepage</button>
+    </div>
+
+    <script>
+        function goToHomepage() {
+            // Using window.location.href to redirect the user
+            // Replace '/' with your actual homepage URL configuration if needed (e.g., '/home/')
+            window.location.href = '/'; 
+        }
+    </script>
+
+</body>
+</html>

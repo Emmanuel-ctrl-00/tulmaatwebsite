@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Stay | Tulmaat Hotel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap">
+<style>
+        :root {
+            --primary-gold: #c5a059;
+            --deep-plum: #4a2c40;
+            --soft-white: #fcfcfc;
+            --overlay: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            /* Using a high-quality background image */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .details-container {
+          background: var(--overlay);
+          backdrop-filter: blur(10px); /* Modern glass effect */
+          padding: 40px;
+          border-radius: 20px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+          width: 100%;
+          max-width: 450px;
+          transition: transform 0.3s ease;
+          /* 1. Transparency: White with 70% opacity */
+          background: rgba(255, 255, 255, 0.5); 
+    /* 2. The Blur: Blurs the image behind the container */
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px); /* For Safari support */
+    /* 3. Aesthetics */
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle "edge" of the glass */
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* Animation remains the same */
+          animation: reveal linear both;
+          animation-timeline: view();
+          animation-range: entry 20% cover 40%;
+          }
+/* Ensure text is dark enough to read against the glass */
+          .container p, .about p {
+          color: #1a1a1a;
+          font-weight: 500; /* Slightly thicker for better legibility */
+          text-shadow: 0 1px 1px rgba(255,255,255,0.5); /* Helps text "pop" */
+          }
+/* If you have a dark background image, use a dark glass instead: */
+/* background: rgba(0, 0, 0, 0.6); color: white; */
+        .container, .about {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 40px;
+        max-width: 1000px;
+        margin: 40px auto;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--deep-plum);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        p.subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .details {
+            margin-bottom: 20px;
+        }
+        .details label {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--deep-plum);
+            margin-bottom: 8px;
+        }
+        .details input, 
+        .details select {
+            width: 100%;
+            padding: 12px 15px;
+            box-sizing: border-box; /* Fixes width issues */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            background-color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .details input:focus, 
+        .details select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+        }
+        /* Styling the submit button */
+        .book-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--deep-plum);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .book-btn:hover {
+            background-color: #382131;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .details-container {
+                padding: 30px 20px;
+            }
+        }
+</style>
+</head>
+<body>
+<div class="details-container">
+<form method="POST" action="">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;">
+            <strong>Please correct the following errors:</strong>
+            {{ form.errors }}
+        </div>
+    {% endif %}
+            <h2>Reservations</h2>
+            <p class="subtitle">Secure your room at Tulmaat Hotel</p>
+    <div class="details">
+            <label for="Name">Full Name</label>
+            <input type="text" id="Name" name="Name" placeholder="Emmanuel Mutai">
+    </div>
+    <div class="details">
+            <label for="Email">Email Address</label>
+            <input type="email" id="Email" name="Email" placeholder="emmanuel@gmail.com" required>
+    </div>
+    <div class="details">
+            <label for="Phone">Phone Number</label>
+            <input type="tel" id="Phone" name="Phone" placeholder="07..." required>
+    </div>
+    <div style="display: flex; gap: 15px;">
+    <div class="details" style="flex: 1;">
+                <label for="Date">Check-In</label>
+                <input type="date" id="Date" name="Date" required>
+    </div>
+    <div class="details" style="flex: 1;">
+                <label for="Package">Package</label>
+                <select id="Package" name="Package">
+                    <option value="1">Bed Only</option>
+                    <option value="2">Bed & Breakfast</option>
+                    <option value="3">Half Board</option>
+                    <option value="4">Full Board</option>
+                    <option value="5">Conference</option>
+                    </select>
+    </div>
+    </div>
+    <button type="submit" class="book-btn">Confirm Booking</button>
+</form>
+    </div>
+</body>
+</html>
