@@ -1,33 +1,37 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import BookingForm
+from .models import bookings
 
 # Create your views here.
+def booking(request):
+    if request.method == 'POST':
+        form = bookings(request.POST)
+
+        name_data = request.POST.get('Name')
+        email_data = request.POST.get('Email')
+        phone_data = request.POST.get('Phone')
+        date_data = request.POST.get('Date')
+        package_data = request.POST.get('Package')
+        
+        # 2. Directly save the data into your Database Model
+        try:
+            bookings.objects.create(
+                Name=name_data,
+                Email=email_data,
+                Phone=phone_data,
+                Date=date_data,
+                Package=package_data
+            )
+            return redirect('success')
+
+        except Exception as e:
+            # 🚨 THIS WILL FORCE THE ERROR TO SHOW ON YOUR SCREEN INSTEAD OF REFRESHING
+            return HttpResponse(f"<h1>Database Refused to Save!</h1><p>Error details: {e}</p>")
+        
+    return render(request, 'booking.html')  
+
 def index (request):
     return render(request, 'index.html')
 
-def booking(request):
-    return render(request, 'booking.html')
-
 def success(request):
     return render(request, 'success.html')
-
-def book_now(request):
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        
-        # 1. TEST: Did the data actually make it to the view?
-        print("--- POST DATA RECEIVED: ---", request.POST)
-        
-        if form.is_valid():
-            form.save()
-            print("--- SUCCESS: DATA SAVED TO DATABASE! ---")
-            return redirect('success.html')
-        else:
-            # 2. TEST: Why did the form reject the data?
-            print("--- FORM VALIDATION FAILED! ERRORS Below: ---")
-            print(form.errors) 
-            
-    else:
-        form = BookingForm()
-        
-    return render(request, 'booking.html', {'form': form})

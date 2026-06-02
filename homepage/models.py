@@ -16,7 +16,7 @@ class bookings(models.Model):
     Package= models.CharField(max_length=1, choices=Package_options)
 
     def __str__(self):
-        return self.name
+        return self.Name
     
     class Meta:
         verbose_name = "booking"

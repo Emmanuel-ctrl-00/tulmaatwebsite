@@ -142,44 +142,32 @@
 <div class="details-container">
 <form method="POST" action="">
     {% csrf_token %}
-    {% if form.errors %}
-        <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;">
-            <strong>Please correct the following errors:</strong>
-            {{ form.errors }}
-        </div>
-    {% endif %}
-            <h2>Reservations</h2>
-            <p class="subtitle">Secure your room at Tulmaat Hotel</p>
+        <h2>Reservations</h2>
+        <p class="subtitle">Secure your room at Tulmaat Hotel</p>
     <div class="details">
-            <label for="Name">Full Name</label>
-            <input type="text" id="Name" name="Name" placeholder="Emmanuel Mutai">
-    </div>
-    <div class="details">
-            <label for="Email">Email Address</label>
-            <input type="email" id="Email" name="Email" placeholder="emmanuel@gmail.com" required>
-    </div>
-    <div class="details">
-            <label for="Phone">Phone Number</label>
-            <input type="tel" id="Phone" name="Phone" placeholder="07..." required>
+        <label for="Name">Full Name</label>
+        <input type="text" id="Name" name="Name" placeholder="Emmanuel Mutai">
+        <label for="Email">Email Address</label>
+        <input type="email" id="Email" name="Email" placeholder="emmanuel@gmail.com" required>
+        <label for="Phone">Phone Number</label>
+        <input type="tel" id="Phone" name="Phone" value="+254" required>
     </div>
     <div style="display: flex; gap: 15px;">
     <div class="details" style="flex: 1;">
-                <label for="Date">Check-In</label>
-                <input type="date" id="Date" name="Date" required>
-    </div>
-    <div class="details" style="flex: 1;">
-                <label for="Package">Package</label>
-                <select id="Package" name="Package">
-                    <option value="1">Bed Only</option>
-                    <option value="2">Bed & Breakfast</option>
-                    <option value="3">Half Board</option>
-                    <option value="4">Full Board</option>
-                    <option value="5">Conference</option>
-                    </select>
+            <label for="Date">Check-In</label>
+            <input type="date" id="Date" name="Date" required>
+            <label for="Package">Package</label>
+            <select id="Package" name="Package">
+                <option value="1">Bed Only</option>
+                <option value="2">Bed & Breakfast</option>
+                <option value="3">Half Board</option>
+                <option value="4">Full Board</option>
+                <option value="5">Conference</option>
+            </select>
     </div>
     </div>
     <button type="submit" class="book-btn">Confirm Booking</button>
 </form>
-    </div>
+</div>
 </body>
 </html>
