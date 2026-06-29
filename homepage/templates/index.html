@@ -105,6 +105,7 @@
             max-width: 450px;
             border-radius: 12px;
             transition: transform 0.5s ease;
+            object-fit: cover;
         }
         .container img:hover {
             transform: scale(1.02);
@@ -283,7 +284,7 @@
 <section id="conference">
         <h2>Conference Room</h2>
         <hr/>
-        <div class="container" style="flex-direction: row-reverse;">
+        <div class="container">
             <div class="image-slider">
             <img src="{% static 'confrence1.jpeg' %}" alt="conference room">
             <img src="{% static 'confrence2.jpeg' %}" alt="conference room">

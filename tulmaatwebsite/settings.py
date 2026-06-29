@@ -74,12 +74,21 @@ WSGI_APPLICATION = 'tulmaatwebsite.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+       'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'your_database_name',      # Provided by Render
+#        'USER': 'your_database_user',      # Provided by Render
+#        'PASSWORD': 'your_password',       # Provided by Render
+#        'HOST': 'your_database_host',      # Provided by Render (looks like an external URL)
+#        'PORT': '5432',                    # Default PostgreSQL port
+#   }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
