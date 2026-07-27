@@ -178,6 +178,7 @@
             justify-content: center;
             gap: 10px;
             font-size: 1.1rem;
+            text-decoration: none;
         }
         /* Scroll Animation (Chrome/Edge Support) */
         @keyframes reveal {
@@ -246,8 +247,8 @@
         <div class="container">
             <div class="image-slider">
             <img src="{% static 'hotel4.jpg' %}" alt="Tulmaat Exterior">
-            <img src="{% static 'restaurant.jpg' %}" alt="Dining Area 1">
-            <img src="{% static 'hotel2.jpg' %}" alt="Dining Area 2">
+            <img src="{% static 'hotel1.jpeg' %}" alt="Tulmaat Exterior">
+            <img src="{% static 'hotel3.jpeg' %}" alt="Tulmaat Exterior">
             </div>
             <span class="slider-hint">← Swipe to view gallery →</span>
             <div class="text">
@@ -257,17 +258,21 @@
         </div>
 </section>
 <section id="restaurant">
-        <h2>Fine Dining</h2>
+        <h2>Our restaurant</h2>
         <hr/>
-        <div class="container" style="flex-direction: row-reverse;">
-            <img src="{% static 'cooking.jpg' %}" alt="Culinary Arts">
+        <div class="container">
+            <div class="image-slider">
+            <img src="{% static 'restaurant.jpg' %}" alt="Dining Area 1">
+            <img src="{% static 'hotel2.jpg' %}" alt="Dining Area 2">
+            </div>
+            <span class="slider-hint">← Swipe to view gallery →</span>
             <div class="text">
                 <p>Our restaurant offers a personalized culinary journey. From <em>à la carte</em> specialties to traditional favorites, every meal is crafted to perfection in an inviting, elegant atmosphere.</p>
             </div>
         </div>
 </section>
 <section id="accommodation">
-    <h3>Rooms & Suites</h3>
+    <h3>Our accommodation</h3>
     <hr/>
     <div class="container">
     <div class="image-slider">
@@ -277,12 +282,12 @@
     </div>
     <span class="slider-hint">← Swipe to view gallery →</span>
     <div class="text">
-         <p>Tulmaat Hotel offers a variety of well-appointed rooms designed for every traveler's comfort.<br>Whether you need a cozy single room for a solo getaway or a spacious suite for a family retreat, our accommodations are crafted to ensure a restful and enjoyable stay.<br>Each room features plush bedding and tasteful decor for a modern yet comfortable experience</p>
+     <p>Tulmaat Hotel offers a variety of well-appointed rooms designed for every traveler's comfort.<br>Whether you need a cozy single room for a solo getaway or a spacious suite for a family retreat, our accommodations are crafted to ensure a restful and enjoyable stay.<br>Each room features plush bedding and tasteful decor for a modern yet comfortable experience</p>
     </div>
     </div>
 </section>
 <section id="conference">
-        <h2>Conference Room</h2>
+        <h2>Our conference</h2>
         <hr/>
         <div class="container">
             <div class="image-slider">
@@ -340,7 +345,9 @@
     <a href="booking.html" class="book-btn">RESERVE YOUR STAY</a>
 </div>
 <footer class="socials">
-    <a href="#"><i class="fa-brands fa-facebook-f"></i> Follow us @tulmaathotel</a>
+    <a href="https://www.facebook.com/Tulmaat-Hotel"><i class="fa-brands fa-facebook-f"></i> Follow us @tulmaathotel</a>
+    <a href="https://www.instagram.com/tulmaat"><i class="fa-brands fa-instagram"></i> Follow us @tulmaathotel</a>
+    <a href="https://www.tiktok.com/@tulmaat_hotel"><i class="fa-brands fa-tiktok"></i> Follow us @tulmaathotel</a>
     <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.7;">&copy; 2026 Tulmaat Hotel. All Rights Reserved.</p>
 </footer>
 </body>
