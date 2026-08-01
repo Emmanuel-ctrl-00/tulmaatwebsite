@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tulmaat Hotel | Luxury Stay in Bomet</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"/>
@@ -22,7 +22,6 @@
             color: var(--text-dark);
             margin: 0;
             padding: 0;
-            overflow-x: visible; /* Ensures that the nav doesn't cut off content on smaller screens */
         }
     nav {
     background-color: var(--deep-plum); /* Using the dark plum from earlier */
@@ -229,6 +228,10 @@
         text-align: center;
         letter-spacing: 1px;
         }
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
 </style>
 <nav>
     <div class="nav-logo">TULMAAT</div>
@@ -305,6 +308,7 @@
 <h4>Accommodation & Rates</h4>
 <hr/>
 <div class="container">
+<div class="table-responsive">
 <table>   
 <caption>Room Occupancy Rates (Ksh)</caption>
         <thead>
@@ -340,6 +344,7 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>
 </section>
 <div class="cta-container">
