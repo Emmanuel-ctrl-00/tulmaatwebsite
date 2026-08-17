@@ -5,125 +5,220 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Tulmaat Hotel | Luxury Stay in Bomet</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"/>
     <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 </head>
 <body>
-{% include "_nav.html" %}
+{% include "_nav.html" with overlay=True %}
 
-<section id="about">
-        <h1>About Tulmaat</h1>
-        <hr class="divider"/>
-        <div class="container">
-            <div class="image-slider">
-            <img src="{% static 'hotel4.jpg' %}" alt="Tulmaat Exterior">
-            <img src="{% static 'hotel1.jpeg' %}" alt="Tulmaat Exterior">
-            <img src="{% static 'hotel3.jpeg' %}" alt="Tulmaat Exterior">
-            </div>
-            <span class="slider-hint">← Swipe to view gallery →</span>
-            <div class="text">
-                <p>Positioned as the "talk-of-the-town," <strong>Tulmaat Hotel</strong> offers an unparalleled blend of modern luxury and authentic hospitality. Located just 300 meters from the Bomet CBD, we provide a peaceful "Home Away from Home" for travelers and locals alike.</p>
-                <p><i class="fa-solid fa-location-dot" style="color: var(--gold)"></i> <strong>Location:</strong> Next to Public Works offices, Bomet Town.</p>
-            </div>
+<section class="hero" style="background-image:url('{% static 'hotel4.jpg' %}')">
+    <div class="hero-inner">
+        <p class="eyebrow">HOSPITALITY WITH A KENYAN HEART</p>
+        <h1>Stay. Dine.<br><em>Gather.</em></h1>
+        <p class="hero-copy">Positioned as the "talk-of-the-town," Tulmaat Hotel offers an unparalleled blend of modern luxury and authentic hospitality — just 300 meters from the Bomet CBD.</p>
+        <div class="hero-actions">
+            <a class="book-btn" href="{% url 'booking' %}">Reserve Your Stay</a>
+            <a class="btn-outline" href="#prices">View Rates</a>
         </div>
-</section>
-<section id="restaurant">
-        <h2>Our restaurant</h2>
-        <hr class="divider"/>
-        <div class="container">
-            <div class="image-slider">
-            <img src="{% static 'restaurant.jpg' %}" alt="Dining Area 1">
-            <img src="{% static 'hotel2.jpg' %}" alt="Dining Area 2">
-            </div>
-            <span class="slider-hint">← Swipe to view gallery →</span>
-            <div class="text">
-                <p>Our restaurant offers a personalized culinary journey. From <em>à la carte</em> specialties to traditional favorites, every meal is crafted to perfection in an inviting, elegant atmosphere.</p>
-            </div>
-        </div>
-</section>
-<section id="accommodation">
-    <h3>Our accommodation</h3>
-    <hr class="divider"/>
-    <div class="container">
-    <div class="image-slider">
-        <img src="{% static 'rooms1.jpeg' %}" alt="Tulmaat Rooms">
-        <img src="{% static 'rooms2.jpeg' %}" alt="Tulmaat Rooms">
-        <img src="{% static 'rooms3.jpeg' %}" alt="Tulmaat Rooms">
-    </div>
-    <span class="slider-hint">← Swipe to view gallery →</span>
-    <div class="text">
-     <p>Tulmaat Hotel offers a variety of well-appointed rooms designed for every traveler's comfort.<br>Whether you need a cozy single room for a solo getaway or a spacious suite for a family retreat, our accommodations are crafted to ensure a restful and enjoyable stay.<br>Each room features plush bedding and tasteful decor for a modern yet comfortable experience</p>
-    </div>
     </div>
 </section>
-<section id="conference">
-        <h2>Our conference</h2>
-        <hr class="divider"/>
-        <div class="container">
-            <div class="image-slider">
-            <img src="{% static 'confrence1.jpeg' %}" alt="conference room">
-            <img src="{% static 'confrence2.jpeg' %}" alt="conference room">
-            </div>
-            <span class="slider-hint">← Swipe to view gallery →</span>
-            <div class="text">
-                <p>Experience seamless meetings and events in our modern, spacious conference hall, perfectly equipped to accommodate up to 120 guests. Designed for corporate meetings, workshops, and private functions, our package is available at KSh 1,800 per person, inclusive of morning/afternoon tea and a full lunch. Book with us to ensure a productive and comfortable event experience.</p>
-            </div>
+
+<div class="facts-strip">
+    <div><strong>300m</strong><span>From Bomet CBD</span></div>
+    <div><strong>3</strong><span>Room Categories</span></div>
+    <div><strong>120</strong><span>Conference Capacity</span></div>
+    <div><strong>5</strong><span>Stay Packages</span></div>
+</div>
+
+<section class="section" id="about">
+    <div class="two-col">
+        <div>
+            <p class="eyebrow">WELCOME TO TULMAAT</p>
+            <h2>A place that feels<br><em>like home.</em></h2>
+            <p>From peaceful, well-appointed rooms to fresh Kenyan cuisine and professional conference facilities, Tulmaat Hotel brings everything together under one roof — right next to the Public Works offices in Bomet Town.</p>
         </div>
+        <div class="image-panel" style="background-image:url('{% static 'hotel1.jpeg' %}')"></div>
+    </div>
 </section>
-<section id="prices">
-<h4>Accommodation & Rates</h4>
-<hr class="divider"/>
-<div class="container">
-<div class="table-scroll">
-<table>
-<caption>Room Occupancy Rates (Ksh)</caption>
-        <thead>
-        <tr>
-        <th>Room Category</th>
-        <th>B&amp;B</th>
-        <th>Half Board</th>
-        <th>Full Board</th>
-        <th>Bed Only</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr style="border-top: 2px solid var(--gold)">
-        <td><strong>Standard</strong></td>
-        <td>2,000</td>
-        <td>2,750</td>
-        <td>3,500</td>
-        <td>1,500</td>
-        </tr>
-        <tr style="border-top: 2px solid var(--gold)">
-        <td><strong>Superior</strong></td>
-        <td>2,500</td>
-        <td>3,250</td>
-        <td>4,000</td>
-        <td>2,000</td>
-        </tr>
-        <tr style="border-top: 2px solid var(--gold)">
-        <td><strong>Deluxe</strong></td>
-        <td>3,000</td>
-        <td>3,750</td>
-        <td>4,500</td>
-        <td>2,500</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-</div>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">EXPLORE</p>
+        <h2>Everything you need, <em>in one place.</em></h2>
+    </div>
+    <div class="service-grid">
+        <article class="service-card" style="background-image:url('{% static 'rooms2.jpeg' %}')">
+            <div>
+                <span class="num">01</span>
+                <h3>Stay</h3>
+                <p>Standard, Superior and Deluxe rooms designed for business trips, weekends and family getaways.</p>
+                <a href="#accommodation">Explore Rooms →</a>
+            </div>
+        </article>
+        <article class="service-card" style="background-image:url('{% static 'cooking.jpg' %}')">
+            <div>
+                <span class="num">02</span>
+                <h3>Dine</h3>
+                <p>A personalized culinary journey, from à la carte specialties to traditional Kenyan favorites.</p>
+                <a href="#restaurant">View Restaurant →</a>
+            </div>
+        </article>
+        <article class="service-card" style="background-image:url('{% static 'confrence1.jpeg' %}')">
+            <div>
+                <span class="num">03</span>
+                <h3>Gather</h3>
+                <p>A modern conference hall for up to 120 guests — perfect for meetings, workshops and private events.</p>
+                <a href="#conference">Explore Conference →</a>
+            </div>
+        </article>
+    </div>
 </section>
-<div class="cta-container">
-    <a href="{% url 'booking' %}" class="book-btn">RESERVE YOUR STAY</a>
-</div>
-<footer class="socials">
-    <p>Follow us on social media:</p>
-    <a href="https://www.facebook.com/Tulmaat-Hotel"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/tulmaat"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@tulmaat_hotel"><i class="fa-brands fa-tiktok"></i></a>
-    <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.7;">&copy; 2026 Tulmaat Hotel. All Rights Reserved.</p>
+
+<section class="section" id="accommodation">
+    <div class="two-col">
+        <div class="image-panel" style="background-image:url('{% static 'rooms1.jpeg' %}')"></div>
+        <div>
+            <p class="eyebrow">REST EASY</p>
+            <h2>Rooms made for <em>good mornings.</em></h2>
+            <p>Tulmaat Hotel offers a variety of well-appointed rooms designed for every traveler's comfort — from a cozy single room for a solo getaway to a spacious suite for a family retreat. Each room features plush bedding and tasteful decor for a modern yet comfortable experience.</p>
+            <ul class="check-list">
+                <li>Standard, Superior &amp; Deluxe categories</li>
+                <li>Bed &amp; Breakfast options available</li>
+                <li>Half board &amp; full board packages</li>
+                <li>Rates from Ksh 1,500</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" id="restaurant">
+    <div class="two-col reverse">
+        <div class="image-panel" style="background-image:url('{% static 'restaurant.jpg' %}')"></div>
+        <div>
+            <p class="eyebrow">AT THE TABLE</p>
+            <h2>Flavours worth <em>coming back for.</em></h2>
+            <p>Our restaurant offers a personalized culinary journey. From à la carte specialties to traditional favorites, every meal is crafted to perfection in an inviting, elegant atmosphere.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="conference">
+    <div class="two-col">
+        <div>
+            <p class="eyebrow">PLANNING AN EVENT?</p>
+            <h2>Spaces built for <em>gathering well.</em></h2>
+            <p>Experience seamless meetings and events in our modern, spacious conference hall, perfectly equipped to accommodate up to 120 guests. Designed for corporate meetings, workshops, and private functions, our package is available at KSh 1,800 per person, inclusive of morning/afternoon tea and a full lunch.</p>
+        </div>
+        <div class="image-panel" style="background-image:url('{% static 'confrence2.jpeg' %}')"></div>
+    </div>
+</section>
+
+<section class="section" id="prices">
+    <div class="section-heading">
+        <p class="eyebrow">RATES</p>
+        <h2>Accommodation &amp; <em>Rates.</em></h2>
+    </div>
+    <div class="table-scroll">
+        <table>
+            <caption>Room Occupancy Rates (Ksh)</caption>
+            <thead>
+            <tr>
+                <th>Room Category</th>
+                <th>B&amp;B</th>
+                <th>Half Board</th>
+                <th>Full Board</th>
+                <th>Bed Only</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="border-top: 2px solid var(--gold)">
+                <td><strong>Standard</strong></td>
+                <td>2,000</td>
+                <td>2,750</td>
+                <td>3,500</td>
+                <td>1,500</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--gold)">
+                <td><strong>Superior</strong></td>
+                <td>2,500</td>
+                <td>3,250</td>
+                <td>4,000</td>
+                <td>2,000</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--gold)">
+                <td><strong>Deluxe</strong></td>
+                <td>3,000</td>
+                <td>3,750</td>
+                <td>4,500</td>
+                <td>2,500</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="gallery">
+    <div class="section-heading">
+        <p class="eyebrow">A LOOK INSIDE</p>
+        <h2>Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-tile wide" style="background-image:url('{% static 'hotel2.jpg' %}')"></div>
+        <div class="gallery-tile" style="background-image:url('{% static 'hotel3.jpeg' %}')"></div>
+        <div class="gallery-tile" style="background-image:url('{% static 'rooms3.jpeg' %}')"></div>
+    </div>
+</section>
+
+<section class="stats-band">
+    <div class="stats-grid">
+        <div><strong>24+</strong><span>Comfortable Rooms</span></div>
+        <div><strong>120</strong><span>Conference Capacity</span></div>
+        <div><strong>3</strong><span>Room Categories</span></div>
+        <div><strong>5</strong><span>Stay Packages</span></div>
+    </div>
+</section>
+
+<section class="cta-band">
+    <div class="cta-band-inner">
+        <div>
+            <p class="eyebrow">READY WHEN YOU ARE</p>
+            <h2>Let's make your stay <em>memorable.</em></h2>
+        </div>
+        <a class="book-btn" href="{% url 'booking' %}">Reserve Your Stay</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <img src="{% static 'img/logo-nav.png' %}" alt="Tulmaat Hotel" class="brand-logo">
+            <p>A modern Kenyan hospitality destination for stays, dining and memorable gatherings, right in the heart of Bomet Town.</p>
+        </div>
+        <div>
+            <h4>Explore</h4>
+            <a href="#accommodation">Rooms</a>
+            <a href="#restaurant">Restaurant</a>
+            <a href="#conference">Conference</a>
+            <a href="{% url 'booking' %}">Reserve Your Stay</a>
+        </div>
+        <div>
+            <h4>Visit Us</h4>
+            <p>Next to Public Works offices,<br>Bomet Town, Kenya.</p>
+        </div>
+        <div>
+            <h4>Follow</h4>
+            <a href="https://www.facebook.com/Tulmaat-Hotel"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+            <a href="https://www.instagram.com/tulmaat"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@tulmaat_hotel"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Tulmaat Hotel. All Rights Reserved.</span>
+        <span>Feel the warmth.</span>
+    </div>
 </footer>
+
 <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

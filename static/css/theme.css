@@ -1,19 +1,24 @@
+/* =========================================================
+   Tulmaat Hotel — shared theme
+   Palette: deep forest green + champagne gold, warm cream base
+   ========================================================= */
+
 :root {
-  --forest: #14301f;      
-  --forest-2: #1f4630;   
-  --emerald: #2f6b47;    
-  --gold: #c8a24d;        
-  --gold-soft: #e4cf9a;   
-  --cream: #f6f4ec;      
+  --forest: #14301f;      /* primary deep green */
+  --forest-2: #1f4630;    /* secondary green, hover/panels */
+  --emerald: #2f6b47;     /* accent green, links/borders */
+  --gold: #c8a24d;        /* champagne gold accent */
+  --gold-soft: #e4cf9a;   /* pale gold for hairlines */
+  --cream: #f6f4ec;       /* warm background */
   --card: #ffffff;
-  --ink: #1b1f1c;         
-  --ink-soft: #4a534c;    
+  --ink: #1b1f1c;         /* near-black text */
+  --ink-soft: #4a534c;    /* secondary text */
   --line: #e2ded0;
 
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 
-  --radius-lg: 10px;
+  --radius-lg: 18px;
   --radius-md: 10px;
   --shadow-soft: 0 10px 30px rgba(20, 48, 31, 0.08);
   --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.35);
@@ -32,7 +37,7 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   line-height: 1.7;
-  overflow-x: hidden; 
+  overflow-x: hidden; /* guards against any stray element widening the viewport on mobile */
 }
 
 img {
@@ -59,7 +64,7 @@ hr.divider {
 
 a { color: inherit; }
 
-/* Hambugger menu on the topbar */
+/* ---------- Top bar (logo + hamburger only — the nav itself stays hidden) ---------- */
 .topbar {
   position: sticky;
   top: 0;
@@ -74,16 +79,19 @@ a { color: inherit; }
 }
 
 .brand {
-  font-family: var(--font-display);
-  color: var(--cream);
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  font-weight: 700;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   white-space: nowrap;
 }
 
-/* menu trigger */
+.brand-logo {
+  height: clamp(38px, 8vw, 52px);
+  width: auto;
+  display: block;
+}
+
+/* Hamburger / menu trigger */
 .menu-toggle {
   appearance: none;
   border: 1px solid var(--gold-soft);
@@ -200,6 +208,7 @@ a { color: inherit; }
   margin: 32px 4px 0;
 }
 
+/* ---------- Containers ---------- */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -208,16 +217,13 @@ a { color: inherit; }
   background-color: var(--card);
   max-width: 1100px;
   margin: 0 auto 40px;
-  border-radius:none;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   align-items: center;
   overflow: hidden;
 }
 
-.container .text {
-  flex: 1.2;
-  min-width: 260px;
-}
+.container .text { flex: 1.2; min-width: 260px; }
 
 .container img,
 .image-slider { flex: 1; }
@@ -257,7 +263,7 @@ a { color: inherit; }
   letter-spacing: 1px;
 }
 
-/*Scrollable table on mobile phones*/
+/* ---------- Tables (rates) — scrollable on narrow phones so nothing is clipped ---------- */
 .table-scroll {
   width: 100%;
   overflow-x: auto;
@@ -280,18 +286,11 @@ th {
   border-bottom: 2px solid var(--line);
   white-space: nowrap;
 }
-td {
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--line);
-}
-tr:hover {
-  background-color: #fafaf6;
-}
+td { padding: 12px 15px; border-bottom: 1px solid var(--line); }
+tr:hover { background-color: #fafaf6; }
+
 /* ---------- Buttons ---------- */
-.cta-container { 
-  text-align: center;
-  margin: 60px 0;
-}
+.cta-container { text-align: center; margin: 60px 0; }
 .book-btn {
   display: inline-block;
   padding: 18px 50px;
@@ -359,7 +358,7 @@ tr:hover {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 40px;
-  border-radius: none;
+  border-radius: var(--radius-lg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 450px;
@@ -435,63 +434,295 @@ tr:hover {
 }
 .success-card h1 { margin: 0 0 10px; font-size: 1.6rem; }
 .success-card p { color: var(--ink-soft); margin-bottom: 25px; }
-.room-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px
+
+/* =========================================================
+   Layout patterns adapted from the reference template —
+   hero band, alternating feature panels, service grid,
+   stats/CTA bands, gallery grid, and a two-column booking
+   layout. Colors/palette stay on the existing green theme.
+   ========================================================= */
+
+/* Transparent header over the hero (index only); solid elsewhere */
+.topbar--overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: linear-gradient(rgba(10, 20, 14, 0.55), transparent);
+  box-shadow: none;
 }
-.room-card{
-    background:#fff;
-    box-shadow:0 10px 30px #0000000d
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: var(--cream);
 }
-.room-photo{
-    height:280px;
-    background-size:cover;
-    background-position:center
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(10,20,14,0.82) 10%, rgba(10,20,14,0.45) 55%, rgba(10,20,14,0.25) 100%);
 }
-.room-deluxe{
-    background-image:url("")
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+  padding-top: 140px;
 }
-.room-executive{
-    background-image:url("")
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 600;
+  margin: 0 0 14px;
 }
-.room-family{
-    background-image:url("")
+.hero h1 {
+  font-family: var(--font-display);
+  text-transform: none;
+  text-align: left;
+  color: var(--cream);
+  margin: 0 0 20px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: 0;
 }
-.room-body{
-    padding:25px
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-copy { max-width: 520px; font-size: 1.05rem; color: #ece7d8; margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; padding-bottom: 120px; }
+.btn-outline {
+  display: inline-block;
+  padding: 16px 38px;
+  border: 1px solid var(--gold-soft);
+  color: var(--cream);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
-.room-title{
-    display:flex;
-    justify-content:space-between;
-    gap:12px;
-    align-items:start
+.btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* ---------- Facts strip (overlaps hero bottom edge) ---------- */
+.facts-strip {
+  position: relative;
+  z-index: 2;
+  margin: -70px auto 0;
+  max-width: 1000px;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 30px clamp(16px, 4vw, 40px);
 }
-.room-title h3{
-    margin:0;
-    font-family:"Playfair Display";
-    font-size:25px
+.facts-strip div { text-align: center; padding: 10px; border-left: 1px solid var(--line); }
+.facts-strip div:first-child { border-left: none; }
+.facts-strip strong { display: block; font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--forest); }
+.facts-strip span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); }
+
+/*  Generic section rhythm */
+.section { padding: clamp(60px, 8vw, 100px) 20px; max-width: 1100px; margin: 0 auto; }
+.section-dark { background: var(--forest); color: var(--cream); }
+.section-dark .two-col-text p { color: #d7ded8; }
+.section-dark h2 { color: var(--cream); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 6vw, 70px);
+  align-items: center;
 }
-.room-title strong{
-    white-space:nowrap;
-    font-size:14px
+.two-col.reverse .image-panel { order: 2; }
+.two-col h2 {
+  font-family: var(--font-display);
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: inherit;
 }
-.room-title small{
-    font-weight:400;
-    color:#777
+.two-col h2 em { color: var(--gold); font-style: italic; }
+.two-col p { color: var(--ink-soft); line-height: 1.75; }
+.section-dark .two-col p { color: #d7ded8; }
+
+.image-panel {
+  min-height: 340px;
+  border-radius: var(--radius-lg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-soft);
 }
-.amenities{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin:20px 0
+
+.check-list { list-style: none; padding: 0; margin: 22px 0; }
+.check-list li { margin: 10px 0; padding-left: 26px; position: relative; }
+.check-list li::before {
+  content: "✓";
+  position: absolute; left: 0;
+  color: var(--gold);
+  font-weight: 700;
 }
-.amenities span{
-    background:#f1ede5;
-    padding:6px 9px;
-    font-size:11px
+
+/*  Service grid  */
+.section-heading { text-align: center; margin-bottom: 46px; }
+.section-heading h2 { margin-top: 0; }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
-/* ---------- Small-screen safety net ---------- */
+.service-card {
+  position: relative;
+  min-height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  color: var(--cream);
+  box-shadow: var(--shadow-soft);
+}
+.service-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(transparent 35%, rgba(10,20,14,0.88));
+}
+.service-card > div { position: relative; z-index: 1; padding: 30px; }
+.service-card span.num { font-size: 0.8rem; color: var(--gold-soft); letter-spacing: 2px; }
+.service-card h3 { font-family: var(--font-display); font-size: 1.7rem; margin: 8px 0; text-align: left; color: var(--cream); }
+.service-card p { color: #ece7d8; margin: 0 0 12px; font-size: 0.92rem; }
+.service-card a { color: var(--gold-soft); font-weight: 600; text-decoration: none; }
+.service-card a:hover { color: var(--gold); }
+
+/* Stats band  */
+.stats-band {
+  background: var(--sage, #e7ede7);
+  padding: 50px 20px;
+}
+.stats-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  gap: 20px;
+}
+.stats-grid strong { display: block; font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--forest); }
+.stats-grid span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); }
+
+/* CTA band  */
+.cta-band {
+  background: var(--forest-2);
+  color: var(--cream);
+  padding: 56px 20px;
+}
+.cta-band-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cta-band-inner h2 { margin: 0; text-align: left; text-transform: none; color: var(--cream); font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.1rem); }
+.cta-band-inner .eyebrow { margin-bottom: 6px; }
+
+/* Gallery grid  */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 14px;
+}
+.gallery-tile {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.gallery-tile.wide { grid-column: span 2; }
+
+/* Expanded footer */
+.footer {
+  background: var(--forest);
+  color: #cfd8d0;
+  padding: 64px 20px 24px;
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-grid .brand-logo { height: 44px; margin-bottom: 14px; }
+.footer-grid p { color: #a9b6ac; font-size: 0.9rem; line-height: 1.7; }
+.footer-grid h4 { color: var(--cream); margin: 0 0 14px; font-family: var(--font-display); font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+.footer-grid a { display: block; color: #b9c4bb; text-decoration: none; font-size: 0.9rem; margin: 8px 0; }
+.footer-grid a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #8fa094;
+}
+
+/*  Booking: two-column layout (form + static info panel) */
+.booking-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 70px) 20px;
+}
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.booking-info {
+  background: var(--forest-2);
+  color: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  position: sticky;
+  top: 100px;
+}
+.booking-info h3 { font-family: var(--font-display); text-align: left; text-transform: none; margin-top: 0; color: var(--cream); font-size: 1.4rem; }
+.booking-info p { color: #d7ded8; font-size: 0.92rem; line-height: 1.7; }
+.booking-info .divider-line { height: 1px; background: rgba(255,255,255,0.15); margin: 20px 0; }
+
+/* Responsiveness  */
+@media (max-width: 900px) {
+  .two-col, .booking-layout { grid-template-columns: 1fr; }
+  .two-col.reverse .image-panel { order: 0; }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .facts-strip { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .booking-info { position: static; }
+}
+@media (max-width: 560px) {
+  .service-grid, .facts-strip, .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-tile.wide { grid-column: auto; }
+  .cta-band-inner { flex-direction: column; align-items: flex-start; }
+  .hero-actions { padding-bottom: 60px; }
+}
+
 @media (max-width: 480px) {
   h1, h2, h3, h4 { margin-top: 40px; font-size: clamp(1.3rem, 6vw, 1.8rem); }
   .details-container { padding: 28px 20px; }
