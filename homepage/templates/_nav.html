@@ -1,0 +1,27 @@
+{% load static %}
+<header class="topbar" data-topbar>
+    <a href="{% url 'index' %}" class="brand">TULMAAT</a>
+    <button type="button"
+            class="menu-toggle"
+            data-menu-toggle
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="site-nav">
+        <span class="bar"></span>
+    </button>
+</header>
+
+<nav class="nav-panel" data-nav-panel id="site-nav">
+    <div class="nav-panel__scrim"></div>
+    <div class="nav-panel__sheet">
+        <p class="nav-panel__eyebrow">Menu</p>
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}#about">About</a></li>
+            <li><a href="{% url 'index' %}#restaurant">Dining</a></li>
+            <li><a href="{% url 'index' %}#accommodation">Accommodation</a></li>
+            <li><a href="{% url 'index' %}#conference">Conference</a></li>
+            <li><a href="{% url 'index' %}#prices">Prices</a></li>
+            <li><a href="{% url 'booking' %}">Reserve Your Stay</a></li>
+        </ul>
+    </div>
+</nav>

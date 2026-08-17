@@ -3,247 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Tulmaat Hotel | Luxury Stay in Bomet</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"/>
-<style>
-    :root {
-            --primary-gold: #c5a059;
-            --deep-plum: #4a2c40;
-            --soft-white: #fcfcfc;
-            --text-dark: #2d2d2d;
-            --light-gray: #f4f4f4;
-        }
-    body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            background-color: #f0f2f5;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-        }
-    nav {
-    background-color: var(--deep-plum); /* Using the dark plum from earlier */
-    padding: 0 20px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky; /* Keeps it at the top while scrolling */
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    flex-wrap: wrap;       /* Allows links to wrap to a second line if they run out of room */
-    gap: 10px;
-    }
-    .nav-logo {
-    font-family: 'Playfair Display', serif;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    }
-    .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    text-decoration: none;
-    }
-    .nav-links a {
-    color: white;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    text-decoration: none;
-    }
-    .nav-links a:hover {
-    color: var(--primary-gold);
-    }
-    @media (max-width: 600px) {
-    .nav-links {
-        gap: 10px;
-    }
-    .nav-links a {
-        font-size: 0.75rem;
-    }
-    }
-    h1, h2, h3, h4{
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            margin-top: 60px;
-            color: var(--deep-plum);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        hr {
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-gold);
-            border: none;
-            margin: 10px auto 40px;
-        }
-        /* --- Containers --- */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 40px;
-            background-color: white;
-            max-width: 1100px;
-            margin: 0 auto 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            align-items: center;
-            overflow: hidden;
-        }
-        .container img {
-            flex: 1;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            transition: transform 0.5s ease;
-            object-fit: cover;
-        }
-        .container img:hover {
-            transform: scale(1.02);
-        }
-        .text {
-            flex: 1.2;
-            min-width: 300px;
-        }
-        /* --- Table Styling --- */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: white;
-        }
-        caption {
-            padding: 20px;
-            font-weight: 600;
-            color: var(--deep-plum);
-            font-size: 1.2rem;
-        }
-        th {
-            background-color: var(--light-gray);
-            color: var(--deep-plum);
-            padding: 15px;
-            text-align: left;
-            font-size: 0.9rem;
-            border-bottom: 2px solid #eee;
-        }
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-        }
-        tr:hover {
-            background-color: #fafafa;
-        }
-        /* --- Buttons --- */
-        .cta-container {
-            text-align: center;
-            margin: 60px 0;
-        }
-        .book-btn {
-            display: inline-block;
-            padding: 18px 50px;
-            background-color: var(--deep-plum);
-            color: white !important;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(74, 44, 64, 0.3);
-        }
-        .book-btn:hover {
-            background-color: var(--primary-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-        /* --- Footer/Socials --- */
-        .socials {
-            background-color: var(--deep-plum);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 80px;
-        }
-        .socials a {
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            text-decoration: none;
-        }
-        /* Scroll Animation (Chrome/Edge Support) */
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .container {
-            animation: reveal linear both;
-            animation-timeline: view();
-            animation-range: entry 10% cover 30%;
-        }
-        @media (max-width: 768px) {
-            .container { flex-direction: column; padding: 20px; }
-            .container img { max-width: 100%; }
-        }
-        /* --- Image Slider Styling --- */
-        .image-slider {
-        flex: 1;
-        width: 100%;
-        max-width: 450px;
-        height: 300px;
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory; /* The magic for snapping */
-        scroll-behavior: smooth;
-        border-radius: 12px;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-/* Hide scrollbar for a cleaner look */
-    .image-slider::-webkit-scrollbar {
-        display: none;
-    }
-    .image-slider img {
-        flex: 0 0 100%; /* Each image takes 100% of the slider width */
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        scroll-snap-align: center; /* Snaps image to center on scroll */
-        }
-/* Optional: Add a "Scroll for more" hint or dots */
-    .slider-hint {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        color: var(--deep-plum);
-        margin-top: 5px;
-        text-align: center;
-        letter-spacing: 1px;
-        }
-</style>
-<nav>
-    <div class="nav-logo">TULMAAT</div>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#restaurant">Dining</a></li>
-        <li><a href="#accommodation">Accommodation</a></li>
-        <li><a href="#conference">Conference</a></li>
-        <li><a href="#prices">Prices</a></li>
-    </ul>
-</nav>
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 </head>
 <body>
+{% include "_nav.html" %}
+
 <section id="about">
         <h1>Welcome to Tulmaat</h1>
-        <hr/>
+        <hr class="divider"/>
         <div class="container">
             <div class="image-slider">
             <img src="{% static 'hotel4.jpg' %}" alt="Tulmaat Exterior">
@@ -253,13 +24,13 @@
             <span class="slider-hint">← Swipe to view gallery →</span>
             <div class="text">
                 <p>Positioned as the "talk-of-the-town," <strong>Tulmaat Hotel</strong> offers an unparalleled blend of modern luxury and authentic hospitality. Located just 300 meters from the Bomet CBD, we provide a peaceful "Home Away from Home" for travelers and locals alike.</p>
-                <p><i class="fa-solid fa-location-dot" style="color: var(--primary-gold)"></i> <strong>Location:</strong> Next to Public Works offices, Bomet Town.</p>
+                <p><i class="fa-solid fa-location-dot" style="color: var(--gold)"></i> <strong>Location:</strong> Next to Public Works offices, Bomet Town.</p>
             </div>
         </div>
 </section>
 <section id="restaurant">
         <h2>Our restaurant</h2>
-        <hr/>
+        <hr class="divider"/>
         <div class="container">
             <div class="image-slider">
             <img src="{% static 'restaurant.jpg' %}" alt="Dining Area 1">
@@ -273,7 +44,7 @@
 </section>
 <section id="accommodation">
     <h3>Our accommodation</h3>
-    <hr/>
+    <hr class="divider"/>
     <div class="container">
     <div class="image-slider">
         <img src="{% static 'rooms1.jpeg' %}" alt="Tulmaat Rooms">
@@ -288,7 +59,7 @@
 </section>
 <section id="conference">
         <h2>Our conference</h2>
-        <hr/>
+        <hr class="divider"/>
         <div class="container">
             <div class="image-slider">
             <img src="{% static 'confrence1.jpeg' %}" alt="conference room">
@@ -302,35 +73,36 @@
 </section>
 <section id="prices">
 <h4>Accommodation & Rates</h4>
-<hr/>
+<hr class="divider"/>
 <div class="container">
-<table>   
+<div class="table-scroll">
+<table>
 <caption>Room Occupancy Rates (Ksh)</caption>
         <thead>
         <tr>
         <th>Room Category</th>
-        <th>B&B</th>
+        <th>B&amp;B</th>
         <th>Half Board</th>
         <th>Full Board</th>
         <th>Bed Only</th>
         </tr>
         </thead>
         <tbody>
-        <tr style="border-top: 2px solid var(--primary-gold)">
+        <tr style="border-top: 2px solid var(--gold)">
         <td><strong>Standard</strong></td>
         <td>2,000</td>
         <td>2,750</td>
         <td>3,500</td>
         <td>1,500</td>
         </tr>
-        <tr style="border-top: 2px solid var(--primary-gold)">
+        <tr style="border-top: 2px solid var(--gold)">
         <td><strong>Superior</strong></td>
         <td>2,500</td>
         <td>3,250</td>
         <td>4,000</td>
         <td>2,000</td>
         </tr>
-        <tr style="border-top: 2px solid var(--primary-gold)">
+        <tr style="border-top: 2px solid var(--gold)">
         <td><strong>Deluxe</strong></td>
         <td>3,000</td>
         <td>3,750</td>
@@ -340,9 +112,10 @@
         </tbody>
     </table>
 </div>
+</div>
 </section>
 <div class="cta-container">
-    <a href="booking.html" class="book-btn">RESERVE YOUR STAY</a>
+    <a href="{% url 'booking' %}" class="book-btn">RESERVE YOUR STAY</a>
 </div>
 <footer class="socials">
     <a href="https://www.facebook.com/Tulmaat-Hotel"><i class="fa-brands fa-facebook-f"></i> Follow us @tulmaathotel</a>
@@ -350,5 +123,6 @@
     <a href="https://www.tiktok.com/@tulmaat_hotel"><i class="fa-brands fa-tiktok"></i> Follow us @tulmaathotel</a>
     <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.7;">&copy; 2026 Tulmaat Hotel. All Rights Reserved.</p>
 </footer>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
