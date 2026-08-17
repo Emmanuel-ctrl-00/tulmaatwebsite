@@ -1,24 +1,19 @@
-/* =========================================================
-   Tulmaat Hotel — shared theme
-   Palette: deep forest green + champagne gold, warm cream base
-   ========================================================= */
-
 :root {
-  --forest: #14301f;      /* primary deep green */
-  --forest-2: #1f4630;    /* secondary green, hover/panels */
-  --emerald: #2f6b47;     /* accent green, links/borders */
-  --gold: #c8a24d;        /* champagne gold accent */
-  --gold-soft: #e4cf9a;   /* pale gold for hairlines */
-  --cream: #f6f4ec;       /* warm background */
+  --forest: #14301f;      
+  --forest-2: #1f4630;   
+  --emerald: #2f6b47;    
+  --gold: #c8a24d;        
+  --gold-soft: #e4cf9a;   
+  --cream: #f6f4ec;      
   --card: #ffffff;
-  --ink: #1b1f1c;         /* near-black text */
-  --ink-soft: #4a534c;    /* secondary text */
+  --ink: #1b1f1c;         
+  --ink-soft: #4a534c;    
   --line: #e2ded0;
 
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 
-  --radius-lg: 18px;
+  --radius-lg: 10px;
   --radius-md: 10px;
   --shadow-soft: 0 10px 30px rgba(20, 48, 31, 0.08);
   --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.35);
@@ -37,7 +32,7 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   line-height: 1.7;
-  overflow-x: hidden; /* guards against any stray element widening the viewport on mobile */
+  overflow-x: hidden; 
 }
 
 img {
@@ -64,7 +59,7 @@ hr.divider {
 
 a { color: inherit; }
 
-/* ---------- Top bar (logo + hamburger only — the nav itself stays hidden) ---------- */
+/* Hambugger menu on the topbar */
 .topbar {
   position: sticky;
   top: 0;
@@ -88,7 +83,7 @@ a { color: inherit; }
   white-space: nowrap;
 }
 
-/* Hamburger / menu trigger */
+/* menu trigger */
 .menu-toggle {
   appearance: none;
   border: 1px solid var(--gold-soft);
@@ -205,7 +200,6 @@ a { color: inherit; }
   margin: 32px 4px 0;
 }
 
-/* ---------- Containers ---------- */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -214,13 +208,16 @@ a { color: inherit; }
   background-color: var(--card);
   max-width: 1100px;
   margin: 0 auto 40px;
-  border-radius: var(--radius-lg);
+  border-radius:none;
   box-shadow: var(--shadow-soft);
   align-items: center;
   overflow: hidden;
 }
 
-.container .text { flex: 1.2; min-width: 260px; }
+.container .text {
+  flex: 1.2;
+  min-width: 260px;
+}
 
 .container img,
 .image-slider { flex: 1; }
@@ -260,7 +257,7 @@ a { color: inherit; }
   letter-spacing: 1px;
 }
 
-/* ---------- Tables (rates) — scrollable on narrow phones so nothing is clipped ---------- */
+/*Scrollable table on mobile phones*/
 .table-scroll {
   width: 100%;
   overflow-x: auto;
@@ -283,11 +280,18 @@ th {
   border-bottom: 2px solid var(--line);
   white-space: nowrap;
 }
-td { padding: 12px 15px; border-bottom: 1px solid var(--line); }
-tr:hover { background-color: #fafaf6; }
-
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--line);
+}
+tr:hover {
+  background-color: #fafaf6;
+}
 /* ---------- Buttons ---------- */
-.cta-container { text-align: center; margin: 60px 0; }
+.cta-container { 
+  text-align: center;
+  margin: 60px 0;
+}
 .book-btn {
   display: inline-block;
   padding: 18px 50px;
@@ -355,7 +359,7 @@ tr:hover { background-color: #fafaf6; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 40px;
-  border-radius: var(--radius-lg);
+  border-radius: none;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 450px;
@@ -431,7 +435,62 @@ tr:hover { background-color: #fafaf6; }
 }
 .success-card h1 { margin: 0 0 10px; font-size: 1.6rem; }
 .success-card p { color: var(--ink-soft); margin-bottom: 25px; }
-
+.room-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px
+}
+.room-card{
+    background:#fff;
+    box-shadow:0 10px 30px #0000000d
+}
+.room-photo{
+    height:280px;
+    background-size:cover;
+    background-position:center
+}
+.room-deluxe{
+    background-image:url("")
+}
+.room-executive{
+    background-image:url("")
+}
+.room-family{
+    background-image:url("")
+}
+.room-body{
+    padding:25px
+}
+.room-title{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:start
+}
+.room-title h3{
+    margin:0;
+    font-family:"Playfair Display";
+    font-size:25px
+}
+.room-title strong{
+    white-space:nowrap;
+    font-size:14px
+}
+.room-title small{
+    font-weight:400;
+    color:#777
+}
+.amenities{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:20px 0
+}
+.amenities span{
+    background:#f1ede5;
+    padding:6px 9px;
+    font-size:11px
+}
 /* ---------- Small-screen safety net ---------- */
 @media (max-width: 480px) {
   h1, h2, h3, h4 { margin-top: 40px; font-size: clamp(1.3rem, 6vw, 1.8rem); }
