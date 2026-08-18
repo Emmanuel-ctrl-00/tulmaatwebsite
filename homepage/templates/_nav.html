@@ -1,6 +1,8 @@
 {% load static %}
-<header class="topbar" data-topbar>
-    <a href="{% url 'index' %}" class="brand">TULMAAT</a>
+<header class="topbar{% if overlay %} topbar--overlay{% endif %}" data-topbar>
+    <a href="{% url 'index' %}" class="brand">
+        <img src="{% static 'img/logo-nav.png' %}" alt="Tulmaat Hotel" class="brand-logo">
+    </a>
     <button type="button"
             class="menu-toggle"
             data-menu-toggle

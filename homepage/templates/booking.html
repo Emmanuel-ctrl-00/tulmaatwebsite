@@ -5,54 +5,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Book Your Stay | Tulmaat Hotel</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;600&display=swap">
 <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 </head>
 <body>
 {% include "_nav.html" %}
 
-<div class="booking-page">
-<div class="details-container">
-<form method="POST" action="" novalidate>
-    {% csrf_token %}
-    <h2>Reservations</h2>
-    <p class="subtitle">Secure your room at Tulmaat Hotel</p>
-
-    {% if form.non_field_errors %}
-        <p class="field-error">{{ form.non_field_errors.0 }}</p>
-    {% endif %}
-
-    <div class="details">
-        <label for="{{ form.Name.id_for_label }}">Full Name</label>
-        {{ form.Name }}
-        {% if form.Name.errors %}<p class="field-error">{{ form.Name.errors.0 }}</p>{% endif %}
-
-        <label for="{{ form.Email.id_for_label }}">Email Address</label>
-        {{ form.Email }}
-        {% if form.Email.errors %}<p class="field-error">{{ form.Email.errors.0 }}</p>{% endif %}
-
-        <label for="{{ form.Phone.id_for_label }}">Phone Number</label>
-        {{ form.Phone }}
-        {% if form.Phone.errors %}<p class="field-error">{{ form.Phone.errors.0 }}</p>{% endif %}
+<div class="booking-shell">
+    <div class="section-heading" style="margin-bottom:36px;">
+        <p class="eyebrow">RESERVATIONS</p>
+        <h2>Book Your <em>Stay.</em></h2>
     </div>
 
-    <div class="form-row">
-        <div class="details">
-            <label for="{{ form.Date.id_for_label }}">Check-In</label>
-            {{ form.Date }}
-            {% if form.Date.errors %}<p class="field-error">{{ form.Date.errors.0 }}</p>{% endif %}
-        </div>
-        <div class="details">
-            <label for="{{ form.Package.id_for_label }}">Package</label>
-            {{ form.Package }}
-            {% if form.Package.errors %}<p class="field-error">{{ form.Package.errors.0 }}</p>{% endif %}
-        </div>
-    </div>
+    <div class="booking-layout">
+        <div class="details-container" style="max-width:none; backdrop-filter:none; background:var(--card); border:1px solid var(--line);">
+            <form method="POST" action="" novalidate>
+                {% csrf_token %}
 
-    <button type="submit" class="book-btn">Confirm Booking</button>
-</form>
+                {% if form.non_field_errors %}
+                    <p class="field-error">{{ form.non_field_errors.0 }}</p>
+                {% endif %}
+
+                <div class="details">
+                    <label for="{{ form.Name.id_for_label }}">Full Name</label>
+                    {{ form.Name }}
+                    {% if form.Name.errors %}<p class="field-error">{{ form.Name.errors.0 }}</p>{% endif %}
+
+                    <label for="{{ form.Email.id_for_label }}">Email Address</label>
+                    {{ form.Email }}
+                    {% if form.Email.errors %}<p class="field-error">{{ form.Email.errors.0 }}</p>{% endif %}
+
+                    <label for="{{ form.Phone.id_for_label }}">Phone Number</label>
+                    {{ form.Phone }}
+                    {% if form.Phone.errors %}<p class="field-error">{{ form.Phone.errors.0 }}</p>{% endif %}
+                </div>
+
+                <div class="form-row">
+                    <div class="details">
+                        <label for="{{ form.Date.id_for_label }}">Check-In</label>
+                        {{ form.Date }}
+                        {% if form.Date.errors %}<p class="field-error">{{ form.Date.errors.0 }}</p>{% endif %}
+                    </div>
+                    <div class="details">
+                        <label for="{{ form.Package.id_for_label }}">Package</label>
+                        {{ form.Package }}
+                        {% if form.Package.errors %}<p class="field-error">{{ form.Package.errors.0 }}</p>{% endif %}
+                    </div>
+                </div>
+
+                <button type="submit" class="book-btn" style="width:100%;">Confirm Booking</button>
+            </form>
+        </div>
+
+        <aside class="booking-info">
+            <h3>Good to Know</h3>
+            <p>Tulmaat Hotel is located next to the Public Works offices in Bomet Town, just 300 meters from the CBD.</p>
+            <div class="divider-line"></div>
+            <p>Choose from Bed Only, Bed &amp; Breakfast, Half Board, Full Board, or our Conference Room package.</p>
+            <div class="divider-line"></div>
+            <p>Once you submit this form, we'll email you a confirmation with your reservation details.</p>
+        </aside>
+    </div>
 </div>
-</div>
+
 <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
