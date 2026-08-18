@@ -12,7 +12,7 @@
 <body>
 {% include "_nav.html" with overlay=True %}
 
-<section class="hero" style="background-image:url \static\hotel4.jpg">
+<section class="hero" style="background-image:url ('{% static 'hotel4.jpeg' %}')">
     <div class="hero-inner">
         <p class="eyebrow">HOSPITALITY WITH A KENYAN HEART</p>
         <h1>Rest, Eat,<br><em>Meet.</em></h1>
