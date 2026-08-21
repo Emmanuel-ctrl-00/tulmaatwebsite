@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load a local .env file if present (safe no-op on Render, where you set
 # env vars directly in the dashboard instead of via a file).
 try:
-    from dotenv import load_dotenv  # type: ignore[import-not-found]
+    from dotenv import load_dotenv 
     load_dotenv(BASE_DIR / '.env')
 except ImportError:
     pass
@@ -86,30 +86,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tulmaatwebsite.wsgi.application'
 
 
-# ---------------------------------------------------------------------------
 # Database
-# Locally (no DATABASE_URL set): SQLite, stored right in the project folder.
-# On Render: set a DATABASE_URL env var pointing at a Render Postgres
-# instance. This matters because Render's web service disk is EPHEMERAL —
-# it's wiped on every deploy/restart. A SQLite file living there loses all
-# data (including your admin account) every time you push new code. A
-# Postgres database lives on its own persistent disk, so it survives
-# deploys. Free Postgres instances are available on Render.
-# ---------------------------------------------------------------------------
-DATABASE_URL = os.environ.get('DATABASE_URL')
-
-if DATABASE_URL:
-    import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
+# To move to Postgres on Render, set DATABASE_URL and swap in dj_database_url:
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
