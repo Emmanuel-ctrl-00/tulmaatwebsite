@@ -8,10 +8,10 @@ class BookingForm(forms.ModelForm):
         fields = ['Name', 'Email', 'Phone', 'Date', 'Package']
         widgets = {
             'Name': forms.TextInput(attrs={
-                'placeholder': 'Emmanuel Mutai', 'autocomplete': 'name',
+                'placeholder': 'John Doe', 'autocomplete': 'name',
             }),
             'Email': forms.EmailInput(attrs={
-                'placeholder': 'emmanuel@gmail.com', 'autocomplete': 'email',
+                'placeholder': 'johndoe@gmail.com', 'autocomplete': 'email',
             }),
             'Phone': forms.TextInput(attrs={
                 'placeholder': '+254712345678', 'autocomplete': 'tel', 'inputmode': 'tel',

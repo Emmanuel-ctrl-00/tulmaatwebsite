@@ -63,7 +63,6 @@ def send_booking_confirmation_email(reservation):
         f"We look forward to welcoming you.\n\n"
         f"Warm regards,\n"
         f"Tulmaat Hotel\n"
-        f"Next to Public Works offices, Bomet Town."
     )
 
     try:

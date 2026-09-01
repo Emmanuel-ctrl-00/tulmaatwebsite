@@ -4,9 +4,6 @@ from django.db import models
 class bookings(models.Model):
     Name = models.CharField(max_length=30)
     Email = models.EmailField()
-    # CharField, not IntegerField: phone numbers can start with "+" or "0"
-    # and are never used arithmetically. An IntegerField would raise an
-    # error the moment someone submits "+254712345678".
     Phone = models.CharField(max_length=20)
     Date = models.DateField()
     Package_options = [
