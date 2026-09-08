@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
         'DJANGO_ALLOWED_HOSTS', 'tulmaatwebsiteg.onrender.com'
     ).split(',')
     if h.strip()
-]
+] + ['tulmaathotel.co.ke', 'www.tulmaathotel.co.ke', '.onrender.com']
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # instead of actually sending, so you can test bookings without SMTP
 # credentials. In production, set the EMAIL_* env vars (see .env.example).
 # ---------------------------------------------------------------------------
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'tulmaathotel@gmail.com')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 
 if EMAIL_HOST_USER:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
