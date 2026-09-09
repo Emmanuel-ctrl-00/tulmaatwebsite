@@ -153,7 +153,7 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = os.environ.get(
-    'DEFAULT_FROM_EMAIL', 'Tulmaat Hotel <no-reply@tulmaathotel.com>'
+    'DEFAULT_FROM_EMAIL', 'Tulmaat Hotel <no-reply@tulmaathotel.co.ke>'
 )
 
 # ---------------------------------------------------------------------------
