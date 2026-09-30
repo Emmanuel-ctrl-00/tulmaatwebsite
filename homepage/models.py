@@ -1,10 +1,20 @@
 from django.db import models
 
 
+# Shared across bookings.Category and rooms.Room_type so the two can be
+# matched exactly when checking availability.
+ROOM_CATEGORY_CHOICES = [
+    ('Standard', 'Standard'),
+    ('Superior', 'Superior'),
+    ('Deluxe', 'Deluxe'),
+]
+
+
 class bookings(models.Model):
     Name = models.CharField(max_length=30)
     Email = models.EmailField()
     Phone = models.CharField(max_length=20)
+    Category = models.CharField(max_length=20, choices=ROOM_CATEGORY_CHOICES, default='Standard')
     Date = models.DateField()
     Package_options = [
         ('1', 'Bed only'),
@@ -25,7 +35,7 @@ class bookings(models.Model):
 
 class rooms(models.Model):
     Room_number = models.CharField(max_length=10)
-    Room_type = models.CharField(max_length=30)
+    Room_type = models.CharField(max_length=20, choices=ROOM_CATEGORY_CHOICES)
     is_available = models.BooleanField(default=True)
 
     def __str__(self):

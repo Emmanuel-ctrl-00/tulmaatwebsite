@@ -40,6 +40,13 @@
                     {% if form.Phone.errors %}<p class="field-error">{{ form.Phone.errors.0 }}</p>{% endif %}
                 </div>
 
+                <div class="details">
+                    <label for="{{ form.Category.id_for_label }}">Room Category</label>
+                    {{ form.Category }}
+                    <p id="availability-status" class="availability-status" aria-live="polite"></p>
+                    {% if form.Category.errors %}<p class="field-error">{{ form.Category.errors.0 }}</p>{% endif %}
+                </div>
+
                 <div class="form-row">
                     <div class="details">
                         <label for="{{ form.Date.id_for_label }}">Check-In</label>

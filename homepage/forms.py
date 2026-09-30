@@ -5,7 +5,7 @@ from .models import bookings
 class BookingForm(forms.ModelForm):
     class Meta:
         model = bookings
-        fields = ['Name', 'Email', 'Phone', 'Date', 'Package']
+        fields = ['Name', 'Email', 'Phone', 'Category', 'Date', 'Package']
         widgets = {
             'Name': forms.TextInput(attrs={
                 'placeholder': 'John Doe', 'autocomplete': 'name',
@@ -16,6 +16,7 @@ class BookingForm(forms.ModelForm):
             'Phone': forms.TextInput(attrs={
                 'placeholder': '+254712345678', 'autocomplete': 'tel', 'inputmode': 'tel',
             }),
+            'Category': forms.Select(attrs={'id': 'id_category'}),
             'Date': forms.DateInput(attrs={'type': 'date'}),
             'Package': forms.Select(),
         }
@@ -26,3 +27,4 @@ class BookingForm(forms.ModelForm):
         if not digits.isdigit() or len(digits) < 9:
             raise forms.ValidationError('Enter a valid phone number, e.g. +254712345678.')
         return phone
+    

@@ -5,4 +5,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("booking/", views.booking, name="booking"),
     path("success/", views.success, name="success"),
+    path("availability/", views.check_availability, name="availability"),
 ]
