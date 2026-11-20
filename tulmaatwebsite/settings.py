@@ -35,10 +35,17 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     h.strip()
     for h in os.environ.get(
-        'DJANGO_ALLOWED_HOSTS', 'tulmaatwebsiteg.onrender.com'
+        'DJANGO_ALLOWED_HOSTS',
+        'tulmaatwebsiteg.onrender.com'
     ).split(',')
     if h.strip()
-] + ['tulmaathotel.co.ke', 'www.tulmaathotel.co.ke', '.onrender.com']
+] + [
+    'tulmaathotel.co.ke',
+    'www.tulmaathotel.co.ke',
+    '.onrender.com',
+    '.vercel.app',
+]
+
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
@@ -87,16 +94,24 @@ WSGI_APPLICATION = 'tulmaatwebsite.wsgi.application'
 
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # To move to Postgres on Render, set DATABASE_URL and swap in dj_database_url:
 # import dj_database_url
 # DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 
+DATABASE_URL = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL')
+if DATABASE_URL:
+    import dj_database_url
+
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=0)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -169,3 +184,5 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+    #!ss#8k6k(_)fi6p8h5sro7so$j352zin5gm!&107%e5#pqw89&
